@@ -1,0 +1,300 @@
+{
+    ////// Editor Styling
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.suggestSelection": "first",
+    // Edit tabsizes to make html and json have 2 but most other languages use 4
+    "editor.tabSize": 4,
+    "[html]": {
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.tabSize": 2
+    },
+    "[nix]": {
+        "editor.tabSize": 2
+    },
+    "editor.insertSpaces": true,
+    // Colour Theme Settings
+    "workbench.colorTheme": "Dracula",
+    // Overriding colour scheme to add some stuff most schemes don't have annoyingly
+    "editor.tokenColorCustomizations": {
+        "[Dracula]": {
+            // Change comments to be more readable for this theme
+            "textMateRules": [
+                {
+                    "scope": [
+                        "comment.line",
+                        "comment.block.documentation",
+                        "string.quoted.docstring.multi"
+                    ],
+                    "settings": {
+                        "fontStyle": "italic",
+                        "foreground": "#90a7ee"
+                    }
+                }
+            ]
+        },
+        "[Monokai Sweet Dark]": {
+            "textMateRules": [
+                {
+                    "scope": [
+                        "variable.parameter.function.language.special.self.python",
+                        "variable.language.special.self.python"
+                    ],
+                    "settings": {
+                        "foreground": "#7d61b3",
+                    }
+                },
+    
+            ]
+        },
+        "[Monokai Sweet Darker]": {
+            "textMateRules": [
+                {
+                    "scope": [
+                        "variable.parameter.function.language.special.self.python",
+                        "variable.language.special.self.python"
+                    ],
+                    "settings": {
+                        "foreground": "#7d61b3",
+                    }
+                },
+    
+            ]
+        }
+    },
+    ////// UI and Program Settings
+    "workbench.iconTheme": "material-icon-theme",
+    "explorer.confirmDelete": false,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.associations": {
+        "*.go": "go",
+        "*.html": "html",
+        ".style.yapf": "ini"
+    },
+    
+    // Remove a lot of remote MS stuff
+    "telemetry.enableCrashReporter": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "update.showReleaseNotes": false,
+    "telemetry.enableTelemetry": false,
+    
+    ////// Terminal Settings (Adding Kitty Support)
+    "terminal.external.linuxExec": "kitty",
+    ////// Git Settings
+    "git.allowForcePush": true,
+    "git.enableCommitSigning": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    // Git Lens Ext
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.views.repositories.location": "scm",
+    "gitlens.views.fileHistory.location": "scm",
+    "gitlens.views.search.enabled": false,
+    "gitlens.views.compare.enabled": false,
+    
+    ////// Python Settings
+    "python.jediEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.formatting.provider": "yapf",
+    // AutoDocString ext
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.includeName": true,
+    
+    ////// Docker Settings
+    "docker.dockerComposeDetached": false,
+    "docker.dockerComposeBuild": false,
+    "docker.containers.label": "ContainerName",
+    
+    ////// GoLang Settings
+    "go.gopath": "/home/roxie/Projects/go",
+    "go.formatTool": "goimports",
+    "go.lintOnSave": "package",
+    "go.useLanguageServer": false,
+    "go.toolsGopath": "/home/roxie/Projects/go",
+    "go.autocompleteUnimportedPackages": true,
+    
+    ////// CSpell check ext
+    "cSpell.enabledLanguageIds": [
+        "asciidoc",
+        "c",
+        "cpp",
+        "css",
+        "dockerfile",
+        "dotenv",
+        "git-commit",
+        "git-rebase",
+        "go",
+        "go.mod",
+        "go.sum",
+        "html",
+        "jade",
+        "java",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "latex",
+        "less",
+        "markdown",
+        "php",
+        "pip-requirements",
+        "plaintext",
+        "pug",
+        "python",
+        "restructuredtext",
+        "rust",
+        "scala",
+        "scss",
+        "shellscript",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "xml",
+        "yaml",
+        "yml"
+    ],
+    "cSpell.userWords": [
+        "Admin",
+        "Affero",
+        "Bulma",
+        "Referer",
+        "TYPECHECK",
+        "Tariq",
+        "WORKDIR",
+        "Webm",
+        "abstractproperty",
+        "aiohttp",
+        "asdict",
+        "asyncio",
+        "basestring",
+        "beautifulsoup",
+        "bitbucket",
+        "builtins",
+        "chown",
+        "classmethod",
+        "codium",
+        "concat",
+        "contextlib",
+        "contextmanager",
+        "csv's",
+        "delslice",
+        "docstring",
+        "docstrings",
+        "dotenv",
+        "dotfiles",
+        "execfile",
+        "from",
+        "getcwd",
+        "getenv",
+        "getslice",
+        "godotenv",
+        "gonic",
+        "grequests",
+        "healthcheck",
+        "ibtehal",
+        "idiv",
+        "inlinevar",
+        "isdir",
+        "isfile",
+        "itertools",
+        "libpq",
+        "metaclass",
+        "msvs",
+        "mymodule",
+        "mypackage",
+        "ncdu",
+        "nsfw",
+        "nvim",
+        "oauth",
+        "optparse",
+        "organisation",
+        "organisation's",
+        "organsation",
+        "overgeneral",
+        "paren",
+        "parseable",
+        "placeholder",
+        "postgres",
+        "postgresql",
+        "pyfile",
+        "pygtk",
+        "pylint",
+        "pywal",
+        "pyyaml",
+        "rcfile",
+        "reddit",
+        "reenable",
+        "regexes",
+        "request",
+        "resp",
+        "roxxers",
+        "setslice",
+        "setup",
+        "siana",
+        "socketio",
+        "softwareventures",
+        "standarderror",
+        "strftime",
+        "strptime",
+        "submodules",
+        "subreddit",
+        "tkinter",
+        "tldr",
+        "unichr",
+        "urllib",
+        "vars",
+        "venv",
+        "vs",
+        "xrange",
+        "xreadlines",
+        "mkdir",
+        "swapon",
+        "swapoff",
+        "swapfile",
+        "totp",
+        "otpauth",
+        "swapfiles",
+        "gopath",
+        "gitlens",
+        "yapf",
+        "vsicons",
+        "unimported",
+        "autofetch",
+        "monokai",
+        "tabsizes",
+        "vsintellicode",
+        "fira",
+        "goimports",
+        "dont",
+        "swapfiles"
+
+    ],
+    "cSpell.language": "en-GB",
+
+    ////// MISC
+    "todo-tree.highlights.enabled": true,
+    "material-icon-theme.showWelcomeMessage": false,
+    "material-icon-theme.showReloadMessage": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.activityBar.visible": true,
+    "sync.gist": "6df5e7ca66102b1bac89c5625ed5f7d0",
+    "window.zoomLevel": -1,
+    "terminal.integrated.fontSize": 13,
+    "editor.fontSize": 15,
+    "terminal.integrated.shell.linux": "/home/roxie/.nix-profile/bin/zsh"
+}
