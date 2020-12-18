@@ -30,13 +30,24 @@ in
       endlessh.enable = true;
       permitRoot = true;
       wgSupport = {
-        enable = true;
+        enable = false;
         ip = wireguard_ip;
       };
     };
     tor.enable = true;
     # python.enable = true;
+  };
 
+  deployment.keys = {
+    wgpsk_laser-moon_subspace = {
+      text = builtins.readFile ./secrets/laser-moon_subspace.psk;
+    };
+    wgpsk_pixel_subspace = {
+      text = builtins.readFile ./secrets/pixel_subspace.psk;
+    };
+    wg_private = {
+      text = builtins.readFile ./secrets/subspace/wg_private;
+    };
   };
 
   # BOOT

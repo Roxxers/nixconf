@@ -1,9 +1,5 @@
 { subspace = 
   { ... }: 
-  { deployment.targetHost = "10.0.3.1";
-    network = {
-      description = "staging environment";
-      enableRollback = true;
-    };
+  { deployment.targetHost = "176.58.101.107";
   }; 
 }

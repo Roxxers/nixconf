@@ -47,6 +47,25 @@ in
   roxie.subspace = {
     enable = true;
     ips = [ "10.0.0.10/21" ];
+    listenPort = 1114;
+    subspacePresharedKeyFile = "/root/wg/laser-moon_subspace.psk";
+    extraPeers = [
+      {
+        publicKey = "X9dKW80aJ6igJDQf8cS5mvYEPXTvtmbTPpLMg5xIGjM=";
+        allowedIPs = [ "10.0.0.11/32" ];
+        presharedKeyFile = "/root/wg/pixel_laser-moon.psk";
+        endpoint = "192.168.0.11:42783";
+      }
+    ];
+  };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts.example = {
+      locations."/" = {
+        root = "${config.system.build.manual.manualHTML}/share/doc/nixos";
+      };
+    };
   };
 
   # BOOT
