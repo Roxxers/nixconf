@@ -82,6 +82,7 @@ in
   # Secrets for non-root
   boot.initrd.secrets = {
     "keyfile0.bin" = "/etc/secrets/initrd/keyfile0.bin";
+    "hdd.key.bin" = "/etc/secrets/initrd/hdd.key.bin";
   };
   # luks
   boot.initrd.luks.devices = {
@@ -98,6 +99,15 @@ in
       label = "ssd";
       blkDev = "/dev/disk/by-uuid/2b0c77ae-7aed-4cd7-87e0-1b5ead5e7de5"; # UUID for /dev/sda1
       keyFile = "/keyfile0.bin";
+    };
+  };
+  fileSystems."/mnt/hdd" = {
+    device = "/dev/disk/by-uuid/8b67c5f4-9b6d-42c3-8971-4057a059690d"; # UUID for /dev/mapper/crypted-data
+    encrypted = {
+      enable = true;
+      label = "hdd";
+      blkDev = "/dev/disk/by-uuid/d9fb72f6-1aa9-45e1-b970-ada439c18bc0"; # UUID for /dev/sda1
+      keyFile = "/hdd.key.bin";
     };
   };
   boot.kernelParams = [ "amd_iomu=soft" ];

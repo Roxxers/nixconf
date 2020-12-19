@@ -30,7 +30,7 @@ in
       endlessh.enable = true;
       permitRoot = true;
       wgSupport = {
-        enable = false;
+        enable = true;
         ip = wireguard_ip;
       };
     };
