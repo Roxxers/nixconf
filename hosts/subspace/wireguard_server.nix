@@ -38,6 +38,11 @@ in
           presharedKeyFile = "/run/keys/wgpsk_pixel_subspace";
           allowedIPs = [ "10.0.0.11/32" ];
         }
+        { # lesbos
+          publicKey = "3G2ek0EbYBpn82Gvk5QU9qaqKTrA2QgtPSL1YgCX7Rw=";
+          presharedKeyFile = "/run/keys/wgpsk_lesbos_subspace";
+          allowedIPs = [ "10.0.0.2/32" ];
+        }
       ];
     };
   };

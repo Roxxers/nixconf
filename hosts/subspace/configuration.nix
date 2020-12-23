@@ -31,7 +31,7 @@ in
       permitRoot = true;
       wgSupport = {
         enable = true;
-        ip = wireguard_ip;
+        ip = wireguard_ip; 
       };
     };
     tor.enable = true;
@@ -40,13 +40,16 @@ in
 
   deployment.keys = {
     wgpsk_laser-moon_subspace = {
-      text = builtins.readFile ./secrets/laser-moon_subspace.psk;
+      text = builtins.readFile ../../secrets/psks/laser-moon_subspace.psk;
     };
     wgpsk_pixel_subspace = {
-      text = builtins.readFile ./secrets/pixel_subspace.psk;
+      text = builtins.readFile ../../secrets/psks/pixel_subspace.psk;
+    };
+    wgpsk_lesbos_subspace = {
+      text = builtins.readFile ../../secrets/psks/lesbos_subspace.psk;
     };
     wg_private = {
-      text = builtins.readFile ./secrets/subspace/wg_private;
+      text = builtins.readFile ../../secrets/subspace/wg_private;
     };
   };
 

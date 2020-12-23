@@ -48,6 +48,7 @@ in
     enable = true;
     ips = [ "10.0.0.10/21" ];
     listenPort = 1114;
+    privateKeyFile = "/root/wg/private";
     subspacePresharedKeyFile = "/root/wg/laser-moon_subspace.psk";
     extraPeers = [
       {
@@ -55,6 +56,12 @@ in
         allowedIPs = [ "10.0.0.11/32" ];
         presharedKeyFile = "/root/wg/pixel_laser-moon.psk";
         endpoint = "192.168.0.11:42783";
+      }
+      { # lesbos
+        publicKey = "3G2ek0EbYBpn82Gvk5QU9qaqKTrA2QgtPSL1YgCX7Rw=";
+        presharedKeyFile = "/root/wg/lesbos_laser-moon.psk";
+        allowedIPs = [ "10.0.0.2/32" ];
+        endpoint = "192.168.0.4:51121";
       }
     ];
   };
@@ -82,7 +89,7 @@ in
   # Secrets for non-root
   boot.initrd.secrets = {
     "keyfile0.bin" = "/etc/secrets/initrd/keyfile0.bin";
-    "hdd.key.bin" = "/etc/secrets/initrd/hdd.key.bin";
+    "hdd.bin" = "/etc/secrets/initrd/hdd.bin";
   };
   # luks
   boot.initrd.luks.devices = {
@@ -102,12 +109,12 @@ in
     };
   };
   fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/8b67c5f4-9b6d-42c3-8971-4057a059690d"; # UUID for /dev/mapper/crypted-data
+    device = "/dev/disk/by-uuid/ef659b98-c84c-4261-96ce-f15c75af1215"; # UUID for /dev/mapper/crypted-data
     encrypted = {
       enable = true;
       label = "hdd";
-      blkDev = "/dev/disk/by-uuid/d9fb72f6-1aa9-45e1-b970-ada439c18bc0"; # UUID for /dev/sda1
-      keyFile = "/hdd.key.bin";
+      blkDev = "/dev/disk/by-uuid/79a168ce-c974-43f4-881c-e0c3b5ffe95f"; # UUID for /dev/sda1
+      keyFile = "/hdd.bin";
     };
   };
   boot.kernelParams = [ "amd_iomu=soft" ];

@@ -27,6 +27,10 @@ in with lib;
         type = with types; nullOr str;
         default = null;
       };
+      privateKeyFile = mkOption {
+        type = with types; str;
+        default = "";
+      };
     };
   };
 
@@ -38,7 +42,7 @@ in with lib;
       subspace = {
         ips = cfg.ips;
         generatePrivateKeyFile = true;
-        privateKeyFile = "/root/wg/private";
+        privateKeyFile = cfg.privateKeyFile;
         listenPort = cfg.listenPort;
         peers = [
           { # Default subspace peer for server access

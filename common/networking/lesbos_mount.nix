@@ -11,11 +11,11 @@ in with lib;
 
   config = mkIf cfg.enable {
     fileSystems."/mnt/storage2" = {
-      device = "192.168.0.4:/srv/nfs/media";
+      device = "192.168.0.4:/srv/media";
       fsType = "nfs";
     };
     fileSystems."/mnt/storage3" = {
-      device = "192.168.0.4:/srv/nfs/dump";
+      device = "192.168.0.4:/srv/dump";
       fsType = "nfs";
     };
   };
