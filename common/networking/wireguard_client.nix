@@ -47,7 +47,7 @@ in with lib;
         peers = [
           { # Default subspace peer for server access
             publicKey = "/34G9jncaupxeWg2mGvFsectLHMRN2/K4jB/LBL7mE8=";
-            allowedIPs = [ "10.0.3.1/32" ];
+            allowedIPs = [ "10.0.3.1/32" "10.0.0.11/32" ];
             endpoint = "176.58.101.107:51820";
             presharedKeyFile = cfg.subspacePresharedKeyFile;
             persistentKeepalive = 25;

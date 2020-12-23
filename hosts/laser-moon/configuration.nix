@@ -51,12 +51,11 @@ in
     privateKeyFile = "/root/wg/private";
     subspacePresharedKeyFile = "/root/wg/laser-moon_subspace.psk";
     extraPeers = [
-      {
-        publicKey = "X9dKW80aJ6igJDQf8cS5mvYEPXTvtmbTPpLMg5xIGjM=";
-        allowedIPs = [ "10.0.0.11/32" ];
-        presharedKeyFile = "/root/wg/pixel_laser-moon.psk";
-        endpoint = "192.168.0.11:42783";
-      }
+      # {
+      #   publicKey = "X9dKW80aJ6igJDQf8cS5mvYEPXTvtmbTPpLMg5xIGjM=";
+      #   allowedIPs = [ "10.0.0.11/32" ];
+      #   presharedKeyFile = "/root/wg/pixel_laser-moon.psk";
+      # }
       { # lesbos
         publicKey = "3G2ek0EbYBpn82Gvk5QU9qaqKTrA2QgtPSL1YgCX7Rw=";
         presharedKeyFile = "/root/wg/lesbos_laser-moon.psk";
