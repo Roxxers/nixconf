@@ -23,7 +23,12 @@ in
 
   roxie = {
     ssd.enable = true;
-    sshd.enable = true;
+    sshd = {
+      enable = true;
+      tor.enable = true;
+      endlessh.enable = false;
+      permitRoot = false;
+    };
     tor.enable = true;
     tor.browserEnable = true;
     desktop = {

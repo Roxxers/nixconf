@@ -7,6 +7,7 @@ imports = [
   # Machine specific setup
   (/. + "${machine}/hardware-configuration.nix")
   (/. + "${machine}/wireguard_server.nix")
+  (/. + "${machine}/nginx.nix")
 ];
 wireguard_ip = "10.0.3.1";
 in
