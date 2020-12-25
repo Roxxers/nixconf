@@ -27,6 +27,7 @@
     pwgen-secure
     qrencode
     rclone
+    rsync
     trash-cli
     vim
     wireguard

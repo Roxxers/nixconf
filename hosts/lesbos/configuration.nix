@@ -8,6 +8,7 @@ imports = [
   (/. + "${machine}/hardware-configuration.nix")
   (/. + "${machine}/jellyfin.nix")
   (/. + "${machine}/mounts.nix")
+  (/. + "${machine}/nextcloud.nix")
 ];
 wireguard_ip = "10.0.0.2";
 lan_ip = "192.168.0.4";
