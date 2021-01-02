@@ -67,6 +67,12 @@ in
         allowedIPs = [ "10.0.0.2/32" ];
         endpoint = "192.168.0.4:51121";
       }
+      { # pihole
+        publicKey = "ILsheX2HYfqtRnu2qOoW88vN3oHtRhzFl4LvGk3eUhM=";
+        presharedKeyFile = "/root/wg/pihole_laser-moon.psk";
+        allowedIPs = [ "10.0.0.1/32" ];
+        endpoint = "192.168.0.2:52000";
+      }
     ];
   };
 

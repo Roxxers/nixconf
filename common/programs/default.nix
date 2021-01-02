@@ -24,10 +24,14 @@
     mkcert
     ncdu
     neofetch
+    pinentry
+    pinentry-curses
     pwgen-secure
     qrencode
     rclone
     rsync
+    sshfs
+    tomb
     trash-cli
     vim
     wireguard

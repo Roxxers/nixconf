@@ -11,6 +11,21 @@ in
     allowedUDPPorts = [ wireguardPort ];
   };
 
+  deployment.keys = {
+    wgpsk_laser-moon_subspace = {
+      text = builtins.readFile ../../secrets/psks/laser-moon_subspace.psk;
+    };
+    wgpsk_lesbos_subspace = {
+      text = builtins.readFile ../../secrets/psks/lesbos_subspace.psk;
+    };
+    wgpsk_pihole_subspace = {
+      text = builtins.readFile ../../secrets/psks/pihole_subspace.psk;
+    };
+    wg_private = {
+      text = builtins.readFile ../../secrets/subspace/wg_private;
+    };
+  };
+
   networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.
     wg0 = {
@@ -42,6 +57,11 @@ in
           publicKey = "3G2ek0EbYBpn82Gvk5QU9qaqKTrA2QgtPSL1YgCX7Rw=";
           presharedKeyFile = "/run/keys/wgpsk_lesbos_subspace";
           allowedIPs = [ "10.0.0.2/32" ];
+        }
+        { # pihole
+          publicKey = "ILsheX2HYfqtRnu2qOoW88vN3oHtRhzFl4LvGk3eUhM=";
+          presharedKeyFile = "/run/keys/wgpsk_pihole_subspace";
+          allowedIPs = [ "10.0.0.1/32" ];
         }
       ];
     };

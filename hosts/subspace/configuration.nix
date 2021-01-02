@@ -39,21 +39,6 @@ in
     # python.enable = true;
   };
 
-  deployment.keys = {
-    wgpsk_laser-moon_subspace = {
-      text = builtins.readFile ../../secrets/psks/laser-moon_subspace.psk;
-    };
-    wgpsk_pixel_subspace = {
-      text = builtins.readFile ../../secrets/psks/pixel_subspace.psk;
-    };
-    wgpsk_lesbos_subspace = {
-      text = builtins.readFile ../../secrets/psks/lesbos_subspace.psk;
-    };
-    wg_private = {
-      text = builtins.readFile ../../secrets/subspace/wg_private;
-    };
-  };
-
   # BOOT
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;

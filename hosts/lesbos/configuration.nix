@@ -9,6 +9,7 @@ imports = [
   (/. + "${machine}/jellyfin.nix")
   (/. + "${machine}/mounts.nix")
   (/. + "${machine}/nextcloud.nix")
+  #(/. + "${machine}/hass.nix")
 ];
 wireguard_ip = "10.0.0.2";
 lan_ip = "192.168.0.4";
@@ -46,6 +47,12 @@ in
           presharedKeyFile = "/run/keys/wgpsk_lesbos_laser-moon";
           endpoint = "192.168.0.10:1114";
         }
+        { # pihole
+          publicKey = "ILsheX2HYfqtRnu2qOoW88vN3oHtRhzFl4LvGk3eUhM=";
+          presharedKeyFile = "/run/keys/wgpsk_pihole_lesbos";
+          allowedIPs = [ "10.0.0.1/32" ];
+          endpoint = "192.168.0.2:52000";
+        }
       ];
     };
     tor.enable = true;
@@ -56,11 +63,11 @@ in
     wgpsk_lesbos_laser-moon = {
       text = builtins.readFile ../../secrets/psks/lesbos_laser-moon.psk;
     };
-    wgpsk_lesbos_pixel = {
-      text = builtins.readFile ../../secrets/psks/lesbos_pixel.psk;
-    };
     wgpsk_lesbos_subspace = {
       text = builtins.readFile ../../secrets/psks/lesbos_subspace.psk;
+    };
+    wgpsk_pihole_lesbos = {
+      text = builtins.readFile ../../secrets/psks/pihole_lesbos.psk;
     };
     wg_private = {
       text = builtins.readFile ../../secrets/lesbos/wg_priv;
