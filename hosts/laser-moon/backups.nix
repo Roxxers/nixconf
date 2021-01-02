@@ -4,7 +4,7 @@
   services.borgbackup.jobs = {
     documents = {
       user = "roxie";
-      startAt = "23:00:00"; # https://www.man7.org/linux/man-pages/man7/systemd.time.7.html
+      startAt = "20:00:00"; # https://www.man7.org/linux/man-pages/man7/systemd.time.7.html
       paths = [ "/home/roxie" ];
       repo = "ssh://u218033@u218033.your-storagebox.de:23/./backups/documents";
       exclude = [ "*.nobackup" "/home/roxie/.cache" "/home/roxie/Downloads" "*/node_modules" "*/*venv" ];
