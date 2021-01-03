@@ -18,9 +18,15 @@ in
 { config, pkgs, ... }:
 
 {
+
   inherit imports;
   system.stateVersion = "20.09";
 
+  networking.firewall = {
+    allowedTCPPorts = [ 443 ];
+  };
+
+  services.nginx.enable = true;
   roxie = {
     sshd = {
       enable = true;
@@ -71,6 +77,16 @@ in
     };
     wg_private = {
       text = builtins.readFile ../../secrets/lesbos/wg_priv;
+    };
+    sslCert = {
+      text = builtins.readFile ../../secrets/lesbos/jellyfin.awoo+3.pem;
+      user = "nginx";
+      group = "nginx";
+    };
+    sslKey = {
+      text = builtins.readFile ../../secrets/lesbos/jellyfin.awoo+3-key.pem;
+      user = "nginx";
+      group = "nginx";
     };
   };
 

@@ -24,6 +24,7 @@
     mkcert
     ncdu
     neofetch
+    openssl
     pinentry
     pinentry-curses
     pwgen-secure
