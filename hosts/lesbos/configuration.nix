@@ -41,12 +41,6 @@ in
       privateKeyFile = "/run/keys/wg_private";
       subspacePresharedKeyFile = "/run/keys/wgpsk_lesbos_subspace";
       extraPeers = [
-        # { # pixel
-        #   publicKey = "X9dKW80aJ6igJDQf8cS5mvYEPXTvtmbTPpLMg5xIGjM=";
-        #   allowedIPs = [ "10.0.0.11/32" ];
-        #   presharedKeyFile = "/run/keys/wgpsk_lesbos_pixel";
-        #   endpoint = "192.168.0.11:42783";
-        # }
         { # laser-moon
           publicKey = "L5CcXiZ3+cWq5BlZm1M3FygyOoIgMJOYQNVzkO7u8Bc=";
           allowedIPs = [ "10.0.0.10/32" ];
