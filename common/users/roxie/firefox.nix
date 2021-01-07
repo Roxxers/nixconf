@@ -31,6 +31,7 @@
         "network.predictor.enable-prefetch" = false;
         "network.prefetch-next" = false;
         "network.IDN_show_punycode" = true;
+        "geo.enabled" = false;
       };
     };
   };
