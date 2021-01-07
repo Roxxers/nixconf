@@ -9,26 +9,25 @@ in
   };
   services.nginx = {
     enable = true;
-
     # Use recommended settings
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
-    #recommendedTlsSettings = true;
+    recommendedTlsSettings = true;
+    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
-    # Only allow PFS-enabled ciphers with AES256
-   # sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
-
-    # Setup Nextcloud virtual host to listen on ports
-    # virtualHosts = {
-    #   "nextcloud.example.com" = {
-    #   };
-    # };
+    virtualHosts = {
+      "cloud.awoo" = {
+        forceSSL = true;
+        sslCertificate = "/run/keys/sslCert";
+        sslCertificateKey = "/run/keys/sslKey";
+      };
+    };
   };
 
   services.nextcloud = {
     enable = true;
-    hostName = "10.0.0.2";
+    hostName = "cloud.awoo";
 
     # Use HTTPS for links
     https = true;
@@ -40,7 +39,7 @@ in
     config = {
       # Further forces Nextcloud to use HTTPS
       overwriteProtocol = "http";
-      extraTrustedDomains = [];
+      extraTrustedDomains = [ "10.0.0.2" "cloud.queerdorks.awoo" ];
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
       dbtype = "pgsql";
