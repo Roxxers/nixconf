@@ -31,6 +31,7 @@
     qrencode
     rclone
     rsync
+    screen
     sshfs
     tomb
     trash-cli
@@ -38,6 +39,13 @@
     wireguard
     wget
     youtube-dl
+
+    # Tomb util packages
+    dcfldd
+    gettext
+    lsof
+    steghide
+    unoconv
 
     # Stuff that needs to be moved to different files
     docker-compose

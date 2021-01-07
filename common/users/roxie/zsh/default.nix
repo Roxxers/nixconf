@@ -3,6 +3,10 @@
 
 
 {
+  home.packages = with pkgs; [
+    starship
+    zsh
+  ];
   home.file = {
     omz_custom = {
       source = ./.omz_custom;
