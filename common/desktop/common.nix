@@ -11,6 +11,7 @@ in with lib; {
     sound.enable = true;
     hardware.pulseaudio = {
       enable = true;
+      extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
 
       # NixOS allows either a lightweight build (default) or full build of PulseAudio to be installed.
       # Only the full build has Bluetooth support, so it must be selected here.
