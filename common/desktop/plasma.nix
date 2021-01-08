@@ -31,7 +31,7 @@ in with lib; {
       plasma5.kscreenlocker
       plasma5.ksshaskpass
       plasma5.plasma-nm
-      plasma5.user-manager
+      #plasma5.user-manager
       plasma-browser-integration
 
       kwalletcli
