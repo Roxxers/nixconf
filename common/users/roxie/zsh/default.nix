@@ -17,6 +17,10 @@
       source = ./.p10k.zsh;
       target = ".p10k.zsh";
     };
+    starshipConf = {
+      source = ./starship.toml;
+      target = ".config/starship.toml";
+    };
   };
   programs.zsh = 
   let
@@ -29,7 +33,7 @@
   } else {};
   # Running powerlevel10k
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-  powerlevel = "[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh";
+  #powerlevel = "[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh";
   in
   {
     enable = true;
@@ -43,7 +47,7 @@
       # Really need something here to deal with powerlevel
       enable = true;
       custom = "/home/roxie/${omz_custom}";
-      theme = "powerlevel10k/powerlevel10k";
+      #theme = "powerlevel10k/powerlevel10k";
       plugins = [
         "extract"
         "git"
@@ -55,7 +59,7 @@
         "zsh-history-substring-search"
         "zsh-syntax-highlighting"
       ];
-      extraConfig = kittyCompletion + powerlevel;
+      extraConfig = kittyCompletion + ''eval "$(starship init zsh)"'';
     };
     sessionVariables = {
       # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
