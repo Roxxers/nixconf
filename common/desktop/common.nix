@@ -68,8 +68,12 @@ in with lib; {
         twemoji-color-font
         inconsolata
         fira-code
-        inconsolata-nerdfont
+        hack-font
+        mononoki
+        noto-fonts
+        roboto
         ubuntu_font_family
+        nerdfonts
       ];
       fontconfig = {
         enable = true;

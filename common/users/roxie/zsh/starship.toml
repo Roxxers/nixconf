@@ -27,7 +27,7 @@ symbol = " "
 symbol = " "
 
 [git_branch]
-symbol = " "
+symbol = "🌱 "
 
 [golang]
 symbol = " "
@@ -64,6 +64,7 @@ symbol = " "
 
 [python]
 symbol = " "
+scan_for_pyfiles = false
 
 [ruby]
 symbol = " "
@@ -71,5 +72,3 @@ symbol = " "
 [rust]
 symbol = " "
 
-[swift]
-symbol = "ﯣ "
