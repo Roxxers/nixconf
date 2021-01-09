@@ -20,6 +20,7 @@ in
   inherit imports;
   
   networking.hostName = "subspace";
+  networking.nameservers = [ "10.0.0.1" "9.9.9.9" ];
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "20.09";
   networking.useDHCP = true;
