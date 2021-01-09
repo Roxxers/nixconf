@@ -1,4 +1,4 @@
-{...}:
+{ pkgs, ... }:
 let 
 database_name = "nextcloud";
 database_user = "nextcloud";
@@ -27,6 +27,7 @@ in
 
   services.nextcloud = {
     enable = true;
+    package = pkgs.nextcloud20;
     hostName = "cloud.awoo";
 
     # Use HTTPS for links
@@ -39,7 +40,7 @@ in
     config = {
       # Further forces Nextcloud to use HTTPS
       overwriteProtocol = "http";
-      extraTrustedDomains = [ "10.0.0.2" "cloud.queerdorks.awoo" ];
+      extraTrustedDomains = [ "10.0.0.2" "cloudn.queerdorks.club" ];
 
       # Nextcloud PostegreSQL database configuration, recommended over using SQLite
       dbtype = "pgsql";
