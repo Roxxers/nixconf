@@ -21,6 +21,9 @@ in
     wgpsk_pihole_subspace = {
       text = builtins.readFile ../../secrets/psks/pihole_subspace.psk;
     };
+    wgpsk_pixel_subspace = {
+      text = builtins.readFile ../../secrets/psks/pixel_subspace.psk;
+    };
     wg_private = {
       text = builtins.readFile ../../secrets/subspace/wg_private;
     };
@@ -36,7 +39,7 @@ in
       # This allows the wireguard server to route your traffic to the internet and hence be like a VPN
       # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
       postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.0/21 -o enp0s4 -j MASQUERADE; ping -c1 10.0.0.10
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.0.0/21 -o enp0s4 -j MASQUERADE
       '';
       postShutdown = ''
         ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.0.0/21 -o enp0s4 -j MASQUERADE
