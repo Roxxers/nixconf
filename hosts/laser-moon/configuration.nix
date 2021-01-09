@@ -20,6 +20,9 @@ in
   ];
   inherit imports;
   system.stateVersion = "20.09";
+    
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
 
   roxie = {
     ssd.enable = true;
