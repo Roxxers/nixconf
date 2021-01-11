@@ -39,12 +39,16 @@ in
       plasma.enable = true;
       gaming.enable = true;
     };
-    go.enable = true;
-    node.enable = true;
-    python.enable = true;
+    programs = {
+      go.enable = true;
+      node.enable = true;
+      python.enable = true;
+      qemu.enable = true;
+      tomb.enable = true;
+    };
     lanPrinter.enable = true;
     lesbosMounts.enable = true;
-    qemu.enable = true;
+    
   };
 
   # Networking

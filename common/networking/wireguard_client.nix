@@ -4,7 +4,7 @@ in with lib;
 {
   options = {
     roxie.subspace = {
-      enable = mkEnableOption "Installs go packages";
+      enable = mkEnableOption "Enables Subspace wireguard intranet vpn";
       ips = mkOption {
         type = with types; listOf str;
         description = "IPs and subnets for the client to use and access";

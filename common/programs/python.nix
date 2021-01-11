@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }: {
   options = {
-    roxie.python.enable = lib.mkEnableOption "Installs python packages";
+    roxie.programs.python.enable = lib.mkEnableOption "Installs python packages";
   };
 
-  config = lib.mkIf config.roxie.python.enable {
+  config = lib.mkIf config.roxie.programs.python.enable {
     environment.systemPackages = with pkgs; [
       gcc # Compiling python libs
       python39Full

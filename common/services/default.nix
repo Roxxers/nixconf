@@ -2,5 +2,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./endlessh.nix ];
+  imports = [ ./endlessh.nix ./ssh.nix ./tor.nix ];
 }

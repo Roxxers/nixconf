@@ -2,10 +2,10 @@
 
 { config, lib, pkgs, ... }: {
   options = {
-    roxie.node.enable = lib.mkEnableOption "Installs python packages";
+    roxie.programs.node.enable = lib.mkEnableOption "Installs python packages";
   };
 
-  config = lib.mkIf config.roxie.node.enable {
+  config = lib.mkIf config.roxie.programs.node.enable {
     environment.systemPackages = with pkgs; [
       nodejs
       nodePackages.yarn

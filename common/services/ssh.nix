@@ -1,7 +1,7 @@
 { config, lib, ... }: 
 let cfg = config.roxie.sshd;
 in with lib; {
-  imports = [ ./services ]; 
+  imports = [ ./endlessh.nix ]; 
   options.roxie.sshd = {
     enable = mkEnableOption "Enables ssh daemon";
     port = mkOption {

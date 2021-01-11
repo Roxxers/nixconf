@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./go.nix ./js.nix ./python.nix ./virtualisation.nix ];
+  imports = [ ./go.nix ./js.nix ./python.nix ./tomb.nix ./virtualisation.nix ];
   # Install all basic programs that I need in my servers and desktops
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -36,16 +36,11 @@
     tomb
     trash-cli
     vim
-    wireguard
     wget
     youtube-dl
 
     # Tomb util packages
-    dcfldd
-    gettext
-    lsof
-    steghide
-    unoconv
+
 
     # Stuff that needs to be moved to different files
     docker-compose
