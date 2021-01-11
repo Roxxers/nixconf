@@ -56,7 +56,6 @@ in
       ];
     };
     tor.enable = true;
-    qemu.enable = true;
   };
 
   deployment.keys = {
@@ -73,12 +72,12 @@ in
       text = builtins.readFile ../../secrets/lesbos/wg_priv;
     };
     sslCert = {
-      text = builtins.readFile ../../secrets/lesbos/jellyfin.awoo+3.pem;
+      text = builtins.readFile ../../secrets/lesbos/jelly-cloud-stash-photos/cert.pem;
       user = "nginx";
       group = "nginx";
     };
     sslKey = {
-      text = builtins.readFile ../../secrets/lesbos/jellyfin.awoo+3-key.pem;
+      text = builtins.readFile ../../secrets/lesbos/jelly-cloud-stash-photos/key.pem;
       user = "nginx";
       group = "nginx";
     };
