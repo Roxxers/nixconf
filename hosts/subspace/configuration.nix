@@ -37,7 +37,10 @@ in
       };
     };
     tor.enable = true;
-    # python.enable = true;
+    services.bitwarden = {
+      enable = true;
+      adminTokenFile = ../../secrets/subspace/bitwarden/admin-token;
+    };
   };
 
   # BOOT
