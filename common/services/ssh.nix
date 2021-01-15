@@ -42,15 +42,18 @@ in with lib; {
       permitRootLogin = if cfg.permitRoot then "yes" else "no";
       passwordAuthentication = false;
       challengeResponseAuthentication = false;
+      # Restrict key exchange, cipher, and MAC algorithms, as per sshaudit.com hardening guide
       macs = [ "hmac-sha2-512-etm@openssh.com" "hmac-sha2-256-etm@openssh.com" "umac-128-etm@openssh.com" ];
-      kexAlgorithms = [ "curve25519-sha256@libssh.org" "diffie-hellman-group16-sha512" "diffie-hellman-group18-sha512" "diffie-hellman-group14-sha256" ];
+      kexAlgorithms = [ "curve25519-sha256@libssh.org" "curve25519-sha256" "diffie-hellman-group16-sha512" "diffie-hellman-group18-sha512" "diffie-hellman-group14-sha256" "diffie-hellman-group-exchange-sha256" ];
       extraConfig = ''
 PubkeyAuthentication yes
 AuthenticationMethods publickey
 UsePAM yes
 Protocol 2
 ClientAliveInterval 300
-ClientAliveCountMax 2'';
+ClientAliveCountMax 2
+HostKeyAlgorithms ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-512,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com
+'';
       listenAddresses = mkIf cfg.wgSupport.enable [ { addr = cfg.wgSupport.ip; } { addr = "127.0.0.1";} ];
     };
 
