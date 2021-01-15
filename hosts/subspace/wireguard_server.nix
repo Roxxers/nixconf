@@ -1,6 +1,6 @@
 
 { lib, pkgs, ...}:
-let wireguardPort = 51820;
+let wireguardPort = 4999;
 in
 {
   # enable NAT
