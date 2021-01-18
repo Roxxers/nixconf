@@ -4,31 +4,22 @@ let borgJob = import ../../common/services/borg.nix;
 in
 {
   services.borgbackup.jobs = {
-    # documents = {
-    #   user = "roxie";
-    #   startAt = "*-*-* 0/4:00:00"; # every 4 hours cronjob style https://www.man7.org/linux/man-pages/man7/systemd.time.7.html
-    #   paths = [ "/home/roxie" ];
-    #   repo = "ssh://u218033@u218033.your-storagebox.de:23/./backups/documents";
-    #   exclude = [ "*.nobackup" "/home/roxie/.cache" "/home/roxie/Downloads" "*/node_modules" "*/*venv" ];
-    #   environment.BORG_RSH = "ssh -i /home/roxie/.ssh/scarif-1";
-    #   encryption = {
-    #     passCommand = "cat /home/roxie/.config/borg/.documents.pass";
-    #     mode = "repokey";
-    #   };
-    #   prune = {
-    #     keep = {
-    #       daily = 7;
-    #       within = "1d";
-    #     };
-    #   };
-    # };
     documents = borgJob {
       name="documents";
       user="roxie";
       startAt="*-*-* 0/4:00:00";
       encryptionCommand="cat /home/roxie/.config/borg/.documents.pass";
       path = "/home/roxie";
-      excludes = [ "Downloads" ];
+      excludes = [ 
+        "Downloads"
+        "code/go/pkg"
+        "code/go/bin" # Dont backup pulled packages or binaries we can compile again
+        ".var"
+        ".config/discord"
+      ] ++ 
+      (map (x: ".local/share/" + x) ["lutris/runners" "lutris/runtime" "baloo" "Trash" "Steam"]);
+    } // rec {
+      prune.prefix = "";
     };
   };
 }
