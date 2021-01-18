@@ -25,6 +25,17 @@ in with lib; {
       packages = with pkgs; [ networkmanager-openvpn ];
     };
 
+    nixpkgs.overlays = [
+      (
+        self: super: {
+          libbluray = super.libbluray.override {
+            withAACS = true;
+            withBDplus = true;
+          };
+        }
+      )
+    ];
+
     services.flatpak.enable = true;
     environment.systemPackages = with pkgs; [
       # Useful desktop apps
