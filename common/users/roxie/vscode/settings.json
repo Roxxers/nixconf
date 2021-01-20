@@ -294,7 +294,7 @@
     "workbench.activityBar.visible": true,
     "sync.gist": "6df5e7ca66102b1bac89c5625ed5f7d0",
     "window.zoomLevel": -1,
-    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontSize": 14,
     "editor.fontSize": 15,
     "terminal.integrated.shell.linux": "/home/roxie/.nix-profile/bin/zsh"
 }
