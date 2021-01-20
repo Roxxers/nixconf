@@ -37,6 +37,16 @@ in with lib; {
       kwalletcli
       pinentry-qt
     ];
+
+    # compositor
+    services.picom.enable = true;
+    environment.etc.picome = {
+      text = ''#!/run/current-system/sw/bin/bash 
+      /run/current-system/sw/bin/picom'';
+      target = "picom.sh";
+      mode = "0555";
+    };
+
     # Open kdeConnect ports
     networking.firewall.allowedTCPPortRanges = [
       kdeConnectPorts
