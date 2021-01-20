@@ -22,28 +22,31 @@ in
 { 
   name,
   repo ? "ssh://u218033@u218033.your-storagebox.de:23/./backups",
+  repoPrefix ? "", # Allows for subfolders like lesbos/nextcloud
   user ? "root",
+  group ? "root",
   startAt ? "daily",
   compression ? "lz4",
   sshKey ? "/home/roxie/.ssh/scarif-1",
   encryptionCommand,
   encryptionMode ? "repokey",
   excludes ? [],
-  prune ? { keep = { daily = 7; within = "1d"; }; },
+  pruneKeep ? { daily = 7; within = "1d"; weekly = 4; },
   path ? ""
 }: 
 {
   user = "${user}";
+  group = "${group}";
   startAt = "${startAt}";
-  repo = "${repo}/${name}";
+  repo = "${repo}/${repoPrefix}${name}";
   environment.BORG_RSH = "ssh -i ${sshKey}";
   compression = "${compression}";
   encryption = {
     passCommand = encryptionCommand;
     mode = encryptionMode;
   };
-  prune = prune;
+  prune.keep = pruneKeep;
   paths = path;
   exclude = map (x: path + "/" + x) (common-excludes ++ excludes);
-  extraCreateArgs = "--verbose --stats --checkpoint-interval 600";
+  extraCreateArgs = "--verbose --stats --progress --checkpoint-interval 600";
 }

@@ -102,35 +102,35 @@ in
   };
 
   # BACKUP
-  services.borgbackup.jobs.nextcloud = {
-    user = "nextcloud"; 
-    group = "keys";
-    startAt = "05:37:00"; # https://www.man7.org/linux/man-pages/man7/systemd.time.7.html
-    paths = [ "/tmp/nextcloud" ];
-    repo = "ssh://u218033@u218033.your-storagebox.de:23/./backups/lesbos/nextcloud";
-    environment.BORG_RSH = "ssh -i /run/keys/scarif-1_ssh";
-    encryption = {
-      passCommand = "cat /run/keys/nextcloud_backup_pass";
-      mode = "repokey";
+
+  services.borgbackup.jobs =
+    let borgJob = import ../../common/services/borg.nix; in {
+    nextcloud = (borgJob {
+      name = "nextcloud";
+      user = "nextcloud"; 
+      group = "keys";
+      repoPrefix = "lesbos/";
+      startAt = "*-*-* 1/4:32:00"; # Every four hours +1:32 offset
+      encryptionCommand = "cat /run/keys/nextcloud_backup_pass";
+      path = "/tmp/nextcloud";
+      sshKey = "/run/keys/scarif-1_ssh";
+      pruneKeep = { daily = 7; within="1d"; };
+    }) // rec {
+      preHook = ''
+      # Lock data, move it, backup db, and then unlock nextcloud so reduce inconsistency and minimal user interruption
+      /run/current-system/sw/bin/nextcloud-occ maintenance:mode --on
+      DATE=$(date +"%Y%m%d")
+      BACKUP_DIR=/tmp/nextcloud
+      mkdir "$BACKUP_DIR"
+      /run/current-system/sw/bin/rsync -Aavx /var/lib/nextcloud/ $BACKUP_DIR/dirbkp_$DATE/
+      PGPASSWORD="$(cat /run/keys/nextcloud_db)" /run/current-system/sw/bin/pg_dump nextcloud -U nextcloud -f $BACKUP_DIR/nextcloud-sqlbkp_$DATE.sql.bak
+      /run/current-system/sw/bin/nextcloud-occ maintenance:mode --off
+      '';
+      postHook = ''
+      # Remove backups from /tmp
+      rm -r /tmp/nextcloud
+      '';
     };
-    prune = {
-      keep = {
-        daily = 7;
-      };
-    };
-    preHook = ''
-    # Lock data, move it, backup db, and then unlock nextcloud so reduce inconsistency and minimal user interruption
-    /run/current-system/sw/bin/nextcloud-occ maintenance:mode --on
-    DATE=$(date +"%Y%m%d")
-    BACKUP_DIR=/tmp/nextcloud
-    mkdir "$BACKUP_DIR"
-    /run/current-system/sw/bin/rsync -Aavx /var/lib/nextcloud/ $BACKUP_DIR/dirbkp_$DATE/
-    PGPASSWORD="$(cat /run/keys/nextcloud_db)" /run/current-system/sw/bin/pg_dump nextcloud -U nextcloud -f $BACKUP_DIR/nextcloud-sqlbkp_$DATE.sql.bak
-    /run/current-system/sw/bin/nextcloud-occ maintenance:mode --off
-    '';
-    postHook = ''
-    # Remove backups from /tmp
-    rm -r /tmp/nextcloud
-    '';
+
   };
 }

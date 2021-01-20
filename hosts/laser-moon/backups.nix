@@ -7,6 +7,7 @@ in
     documents = borgJob {
       name="documents";
       user="roxie";
+      group="users";
       startAt="*-*-* 0/4:00:00";
       encryptionCommand="cat /home/roxie/.config/borg/.documents.pass";
       path = "/home/roxie";
@@ -19,7 +20,7 @@ in
       ] ++ 
       (map (x: ".local/share/" + x) ["lutris/runners" "lutris/runtime" "baloo" "Trash" "Steam"]);
     } // rec {
-      prune.prefix = "";
+      #prune.prefix = "";
     };
   };
 }
