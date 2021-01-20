@@ -40,7 +40,7 @@ in with lib; {
 
     # compositor
     services.picom.enable = true;
-    environment.etc.picome = {
+    environment.etc.picom = {
       text = ''#!/run/current-system/sw/bin/bash 
       /run/current-system/sw/bin/picom'';
       target = "picom.sh";
