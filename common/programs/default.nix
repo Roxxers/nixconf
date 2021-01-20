@@ -21,6 +21,7 @@
     gopass
     handbrake
     htop
+    mailutils
     mkcert
     ncdu
     neofetch
