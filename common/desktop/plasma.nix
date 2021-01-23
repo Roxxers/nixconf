@@ -12,26 +12,25 @@ in with lib; {
     nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
     environment.systemPackages = with pkgs; [
-      kdeApplications.ark
-      kdeApplications.dolphin-plugins
-      kdeApplications.filelight
-      kdeApplications.gwenview
-      kdeApplications.kate
-      kdeApplications.kcalc
-      kdeApplications.kdeconnect-kde
-      kdeApplications.kdf
-      kdeApplications.kgpg
-      kdeApplications.kontact
-      kdeApplications.okular
-      kdeApplications.ffmpegthumbs
+      libsForQt5.ark
+      libsForQt5.dolphin-plugins
+      libsForQt5.filelight
+      libsForQt5.gwenview
+      libsForQt5.kate
+      libsForQt5.kcalc
+      libsForQt5.kdeconnect-kde
+      libsForQt5.kdf
+      libsForQt5.kgpg
+      libsForQt5.kontact
+      libsForQt5.okular
+      libsForQt5.ffmpegthumbs
 
       konversation
-      plasma5.discover
-      plasma5.kdeplasma-addons
-      plasma5.kscreenlocker
-      plasma5.ksshaskpass
-      plasma5.plasma-nm
-      #plasma5.user-manager
+      libsForQt5.discover
+      libsForQt5.kdeplasma-addons
+      libsForQt5.kscreenlocker
+      libsForQt5.ksshaskpass
+      libsForQt5.plasma-nm
       plasma-browser-integration
 
       kwalletcli
@@ -42,7 +41,7 @@ in with lib; {
     services.picom.enable = true;
     environment.etc.picom = {
       text = ''#!/run/current-system/sw/bin/bash 
-      /run/current-system/sw/bin/picom'';
+      /run/current-system/sw/bin/picom --vsync'';
       target = "picom.sh";
       mode = "0555";
     };
