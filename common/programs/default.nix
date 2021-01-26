@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./go.nix ./js.nix ./python.nix ./tomb.nix ./virtualisation.nix ];
+  imports = [ ./podman.nix ./go.nix ./js.nix ./python.nix ./tomb.nix ./virtualisation.nix ];
   # Install all basic programs that I need in my servers and desktops
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
