@@ -38,12 +38,17 @@ in with lib; {
     ];
 
     # compositor
-    services.picom.enable = true;
-    environment.etc.picom = {
-      text = ''#!/run/current-system/sw/bin/bash 
-      /run/current-system/sw/bin/picom --vsync'';
-      target = "picom.sh";
-      mode = "0555";
+    # setup so no tearing on nvidia non-free drivers
+    services.picom = {
+      enable = true;
+      vSync = true;
+      fade = true;
+      fadeDelta = 5;
+      fadeSteps = [ 0.04 0.04 ];
+      backend = "xr_glx_hybrid";
+      settings = {
+        xrender-sync-fence = true;
+      };
     };
 
     # Open kdeConnect ports
