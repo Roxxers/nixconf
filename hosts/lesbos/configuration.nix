@@ -9,6 +9,7 @@ imports = [
   (/. + "${machine}/jellyfin.nix")
   (/. + "${machine}/mounts.nix")
   (/. + "${machine}/nextcloud.nix")
+  (/. + "${machine}/backups.nix")
   #(/. + "${machine}/hass.nix")
 ];
 wireguard_ip = "10.0.0.2";
@@ -23,7 +24,7 @@ in
   system.stateVersion = "20.09";
 
   networking.firewall = {
-    allowedTCPPorts = [ 443 ];
+    allowedTCPPorts = [ 80 443 ];
   };
 
   services.nginx.enable = true;
@@ -56,6 +57,7 @@ in
       ];
     };
     tor.enable = true;
+    programs.qemu.enable = true;
   };
 
   deployment.keys = {
@@ -81,6 +83,9 @@ in
       user = "nginx";
       group = "nginx";
     };
+    mediabackup = {
+      text = builtins.readFile ../../secrets/lesbos/mediabackup;
+    };
   };
 
   # Networking
@@ -95,6 +100,12 @@ in
     efiSupport = true;
     device = "nodev";
   };
+  boot.loader.grub.copyKernels = true; # https://nixos.wiki/wiki/NixOS_on_ZFS#Known_issues
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ zfs ];
+  services.zfs.autoSnapshot.enable = true;
+  services.zfs.autoScrub.enable = true;
+  networking.hostId = "36f5c448";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;

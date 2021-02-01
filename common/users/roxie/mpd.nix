@@ -3,7 +3,7 @@
 {
   services.mpd = {
     enable = true;
-    musicDirectory = "/mnt/storage2/Music/The Collection/";
+    musicDirectory = "/mnt/music/The Collection/";
     extraConfig = ''
       audio_output {
         type "pulse" # MPD must use Pulseaudio

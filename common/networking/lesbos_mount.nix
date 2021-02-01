@@ -10,12 +10,20 @@ in with lib;
   };
 
   config = mkIf cfg.enable {
-    fileSystems."/mnt/storage2" = {
-      device = "192.168.0.4:/srv/media";
+    fileSystems."/mnt/books" = {
+      device = "192.168.0.4:/srv/books";
       fsType = "nfs";
     };
-    fileSystems."/mnt/storage3" = {
-      device = "192.168.0.4:/srv/dump";
+    fileSystems."/mnt/music" = {
+      device = "192.168.0.4:/srv/music";
+      fsType = "nfs";
+    };
+    fileSystems."/mnt/pictures" = {
+      device = "192.168.0.4:/srv/pictures";
+      fsType = "nfs";
+    };
+    fileSystems."/mnt/videos" = {
+      device = "192.168.0.4:/srv/videos";
       fsType = "nfs";
     };
   };
