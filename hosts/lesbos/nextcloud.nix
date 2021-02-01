@@ -7,17 +7,17 @@ in
   networking.firewall = {
     allowedTCPPorts = [ 80 443 ];
   };
-  services.nginx = {
+  roxie.services.nginx = {
     enable = true;
-    # Use recommended settings
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
-
+    usesKeyDeploy = true;
     virtualHosts = {
       "cloud.awoo" = {
+        listen = [{
+          addr = "10.0.0.2";
+          port = 443;
+          ssl = true;
+        }];
+        serverName = "cloud.awoo";
         forceSSL = true;
         sslCertificate = "/run/keys/sslCert";
         sslCertificateKey = "/run/keys/sslKey";
@@ -71,8 +71,6 @@ in
     requires = ["postgresql.service"];
     after = ["postgresql.service"];
   };
-
-  users.users."nextcloud".extraGroups = [ "keys" ];
 
   deployment.keys = {
     nextcloud_db = {

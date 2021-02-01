@@ -11,15 +11,10 @@ in with lib; {
     };
   };
 
-  config = lib.mkIf config.roxie.services.bitwarden.enable {
-    networking.firewall.allowedTCPPorts = [
-      8812 8000
-    ];
+  config = mkIf config.roxie.services.bitwarden.enable {
     services.bitwarden_rs = {
       enable = true;
       #backupDir = "/etc/bitwarden";
-      
-
       config = {
         WEB_VAULT_FOLDER = "${pkgs.bitwarden_rs-vault}/share/bitwarden_rs/vault";
         WEB_VAULT_ENABLED = true;
@@ -43,6 +38,22 @@ in with lib; {
     environment.systemPackages = with pkgs; [
       bitwarden_rs-vault
     ];
+    environment.etc."fail2ban/filter.d/bitwarden_rs.conf" = {
+      text = ''
+        [INCLUDES]
+        before = common.conf
 
+        [Definition]
+        failregex = ^.*Username or password is incorrect\. Try again\. IP: <ADDR>\. Username:.*$
+        ignoreregex =
+      '';
+    };
+    services.fail2ban.jails.bitwarden_rs = mkIf config.roxie.services.fail2ban.enable ''
+      enabled  = true
+      filter   = bitwarden_rs
+      findtime = 600
+      bantime  = 600
+      maxretry = 3
+    '';
   };
 }

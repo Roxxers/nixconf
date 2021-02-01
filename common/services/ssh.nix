@@ -67,5 +67,9 @@ HostKeyAlgorithms ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,sk-ssh-ed25519@op
       port = cfg.endlessh.port;
     };
 
+    services.fail2ban.jails.sshd = mkIf config.roxie.services.fail2ban.enable ''
+      enabled  = true
+      mode     = aggressive
+    '';
   };
 }

@@ -23,6 +23,7 @@ in
     
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  services.flatpak.enable = true;
 
   roxie = {
     ssd.enable = true;
@@ -34,22 +35,35 @@ in
     };
     tor.enable = true;
     tor.browserEnable = true;
+    services.fail2ban.enable = true;
     desktop = {
       enable = true;
       plasma.enable = true;
       gaming.enable = true;
     };
     programs = {
+      #docker.enable = true;
       go.enable = true;
       node.enable = true;
       python.enable = true;
       qemu.enable = true;
       tomb.enable = true;
+      podman.enable = true;
     };
     lanPrinter.enable = true;
     lesbosMounts.enable = true;
-    
   };
+  # virtualisation.oci-containers.containers."filerun-mariadb" = {
+  #   image = "mariadb:10.1";
+  #   environment = {
+  #     "MYSQL_ROOT_PASSWORD" = "randompasswd";
+  #     "MYSQL_USER" = "filerun";
+  #     "MYSQL_PASSWORD" = "randompasswd";
+  #     "MYSQL_DATABASE" = "filerundb";
+  #   };
+  #   volumes = [ "/home/delegator/filerun/db:/var/lib/mysql" ];
+  # };
+
 
   # Networking
   networking.hostName = "laser-moon";
@@ -82,15 +96,7 @@ in
       }
     ];
   };
-
-  services.nginx = {
-    enable = true;
-    virtualHosts.example = {
-      locations."/" = {
-        root = "${config.system.build.manual.manualHTML}/share/doc/nixos";
-      };
-    };
-  };
+  services.fail2ban.enable = true;
 
   # BOOT
   boot.loader.systemd-boot.enable = true;

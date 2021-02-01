@@ -26,6 +26,7 @@ in
   networking.useDHCP = true;
 
   roxie = {
+    services.fail2ban.enable = true;
     sshd = {
       enable = true;
       tor.enable = true;
