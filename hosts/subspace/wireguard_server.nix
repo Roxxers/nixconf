@@ -31,7 +31,7 @@ in
 
   networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.
-    wg0 = {
+    subspace = {
       # Determines the IP address and subnet of the server's end of the tunnel interface.
       ips = [ "10.0.3.1/21" ];
       listenPort = wireguardPort;
