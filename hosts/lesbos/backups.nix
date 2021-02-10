@@ -10,7 +10,7 @@ in
       group="keys";
       sshKey = "/run/keys/scarif-1_ssh";
       encryptionCommand="cat /run/keys/mediabackup";
-      path = "/mnt/dump";
+      path = "/srv/";
       excludes = [ "*/OnlyFans"
       ];
     };
