@@ -35,6 +35,7 @@ in with lib; {
 
       kwalletcli
       pinentry-qt
+      flameshot
     ];
 
     # compositor
@@ -45,7 +46,7 @@ in with lib; {
       fade = true;
       fadeDelta = 5;
       fadeSteps = [ 0.04 0.04 ];
-      backend = "xr_glx_hybrid";
+      backend = "glx";
       settings = {
         xrender-sync-fence = true;
       };
