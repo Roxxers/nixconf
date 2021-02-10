@@ -19,8 +19,22 @@ in
         ".config/discord"
       ] ++ 
       (map (x: ".local/share/" + x) ["lutris/runners" "lutris/runtime" "baloo" "Trash" "Steam"]);
-    } // rec {
-      #prune.prefix = "";
+    };
+    vm-disks = borgJob {
+      name="laser-moon/vm-disks";
+      user="root";
+      group="root";
+      startAt="*-*-* 2/4:03:00";
+      encryptionCommand = "cat /root/vm-disks-pass";
+      path = "/mnt/ssd/vm";
+    };
+    tombs = borgJob {
+      name="tombs";
+      user="roxie";
+      group="users";
+      startAt="*-*-* 2/6:03:00";
+      encryptionCommand = "cat /home/roxie/.config/borg/.tombs.pass";
+      path = "/mnt/hdd/tombs";
     };
   };
 }
