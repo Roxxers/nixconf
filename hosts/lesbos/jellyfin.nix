@@ -15,9 +15,23 @@
         port = 443;
         ssl = true;
       }];
+      
       forceSSL = true;
       sslCertificate = "/run/keys/sslCert";
       sslCertificateKey = "/run/keys/sslKey";
+      locations = {
+        "/" = {
+          proxyPass = "http://localhost:8096";
+        };
+      };
+    };
+    virtualHosts."jellyfin.lan" = {
+      listen = [{
+        addr = "192.168.0.4";
+        port = 80;
+        ssl = false;
+      }];
+      
       locations = {
         "/" = {
           proxyPass = "http://localhost:8096";
