@@ -10,6 +10,7 @@ imports = [
   (/. + "${machine}/mounts.nix")
   (/. + "${machine}/nextcloud.nix")
   (/. + "${machine}/backups.nix")
+  (/. + "${machine}/stash.nix")
   #(/. + "${machine}/hass.nix")
 ];
 wireguard_ip = "10.0.0.2";
