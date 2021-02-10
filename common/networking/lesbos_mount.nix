@@ -14,6 +14,10 @@ in with lib;
       device = "192.168.0.4:/srv/books";
       fsType = "nfs";
     };
+    fileSystems."/mnt/dump" = {
+      device = "192.168.0.4:/srv/dump";
+      fsType = "nfs";
+    };
     fileSystems."/mnt/music" = {
       device = "192.168.0.4:/srv/music";
       fsType = "nfs";
