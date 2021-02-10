@@ -53,6 +53,7 @@ in
       adminuser = "admin";
     };
   };
+  users.users."nextcloud".extraGroups = [ "keys" ];
 
   services.postgresql = {
     enable = true;

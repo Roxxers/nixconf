@@ -26,13 +26,7 @@ in
   networking.firewall = {
     allowedTCPPorts = [ 80 443 ];
   };
-  services.nginx = {
-    enable = true;
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
+  roxie.services.nginx = {
     virtualHosts = {
       "onion.queerdorks.club" = {
         enableACME = true;
@@ -74,7 +68,6 @@ in
       };
     };
   };
-  users.users."nginx".extraGroups = [ "keys" ];
   deployment.keys = {
     "bitwarden.sslCert" = {
       text = builtins.readFile ../../secrets/subspace/bitwarden/cert.pem;

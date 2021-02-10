@@ -3,7 +3,7 @@ let cfg = config.roxie.services.nginx;
 in with lib; {
   options = {
     roxie.services.nginx = {
-      enable = mkEnableOption "Enables fail2ban, enables all jails defined in services";
+      enable = mkEnableOption "Nginx";
       virtualHosts = mkOption {
         default = {};
         description = "The port to listen on";
@@ -17,6 +17,7 @@ in with lib; {
   config = mkIf cfg.enable {
     services.nginx = {
       enable = true;
+      logError = "/var/log/nginx/error.log";
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
       recommendedProxySettings = true;
@@ -25,12 +26,15 @@ in with lib; {
       virtualHosts = cfg.virtualHosts;
     };
     users.users."nginx".extraGroups = mkIf cfg.usesKeyDeploy [ "keys" ];
-    services.fail2ban.jails = mkIf config.roxie.services.fail2ban.enable {
+    services.fail2ban.jails = mkIf config.services.fail2ban.enable {
       nginx-http-auth = ''
         enabled  = true
+        port     = http,https
         filter   = nginx-http-auth
-        banaction = iptables-allports
         logpath  = /var/log/nginx/error.log
+        backend = polling
+        banaction = iptables-allports
+        findtime = 1800
         bantime  = 1800
         maxretry = 5
       '';
@@ -39,6 +43,7 @@ in with lib; {
         port     = http,https
         filter   = apache-badbots
         logpath  = /var/log/nginx/access.log
+        backend = polling
         maxretry = 2
         bantime  = -1
       '';

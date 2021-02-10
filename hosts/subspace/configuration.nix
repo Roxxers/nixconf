@@ -26,7 +26,13 @@ in
   networking.useDHCP = true;
 
   roxie = {
-    services.fail2ban.enable = true;
+    services = {
+      fail2ban.enable = true;
+      nginx = {
+        enable = true;
+        usesKeyDeploy = true;
+      };
+    };
     sshd = {
       enable = true;
       tor.enable = true;
