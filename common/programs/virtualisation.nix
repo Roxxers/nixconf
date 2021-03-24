@@ -6,7 +6,7 @@
   config = lib.mkIf config.roxie.programs.qemu.enable {
     virtualisation.libvirtd.enable = true;
     programs.dconf.enable = true;
-    environment.systemPackages = with pkgs; [ virt-manager ];
+    environment.systemPackages = with pkgs; [ virt-manager libguestfs ];
     services.spice-vdagentd.enable = true;
   };
 }
