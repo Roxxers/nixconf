@@ -62,6 +62,7 @@ in with lib; {
       gtimelog
       inkscape
       libreoffice-fresh
+      nextcloud-client
       thunderbird
       vscodium
       virt-manager

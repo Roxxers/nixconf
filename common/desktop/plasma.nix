@@ -16,16 +16,23 @@ in with lib; {
       libsForQt5.dolphin-plugins
       libsForQt5.filelight
       libsForQt5.gwenview
+      libsForQt5.kaccounts-integration
       libsForQt5.kate
       libsForQt5.kcalc
       libsForQt5.kdeconnect-kde
       libsForQt5.kdf
       libsForQt5.kgpg
-      libsForQt5.kontact
+      libsForQt5.kmail-account-wizard
       libsForQt5.okular
       libsForQt5.ffmpegthumbs
 
+      digikam
+      ktouch
+      krita
+      kmail
+      kontact
       konversation
+      korganizer
       libsForQt5.discover
       libsForQt5.kdeplasma-addons
       libsForQt5.kscreenlocker
