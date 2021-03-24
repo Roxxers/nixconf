@@ -59,7 +59,7 @@
         "zsh-history-substring-search"
         "zsh-syntax-highlighting"
       ];
-      extraConfig = kittyCompletion + ''eval "$(starship init zsh)"'';
+      extraConfig = kittyCompletion + ''eval "$(starship init zsh)"'' + ''eval "$(direnv hook zsh)"'';
     };
     sessionVariables = {
       # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
@@ -79,7 +79,7 @@
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       # vscode alias
-      "c" = "${config.programs.vscode.package} ./";
+      "c" = "${config.programs.vscode.package}/bin/codium ./";
       # ls stuff
       "ls" = "ls --color=auto";
       "la" = "ls -Ah";
