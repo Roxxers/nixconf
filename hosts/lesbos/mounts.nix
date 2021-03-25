@@ -22,8 +22,13 @@
     device = "zpool/videos";
     fsType = "zfs";
   };
+  fileSystems."/srv/backup" = {
+    device = "/mnt/backup";
+    options = [ "bind" ];
+  };
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
+    /srv/backup    192.168.0.0/24(rw,sync) 10.0.0.0/21(rw,sync)
     /srv/books    192.168.0.0/24(rw,sync) 10.0.0.0/21(rw,sync)
     /srv/dump     192.168.0.0/24(rw,sync) 10.0.0.0/21(rw,sync)
     /srv/music    192.168.0.0/24(rw,sync) 10.0.0.0/21(rw,sync)

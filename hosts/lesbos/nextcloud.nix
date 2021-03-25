@@ -19,8 +19,8 @@ in
         }];
         serverName = "cloud.awoo";
         forceSSL = true;
-        sslCertificate = "/run/keys/sslCert";
-        sslCertificateKey = "/run/keys/sslKey";
+        sslCertificate = "/etc/ssl/certs/sslCert";
+        sslCertificateKey = "/etc/ssl/certs/sslKey";
       };
     };
   };
